@@ -1,2 +1,1 @@
-# ry.java
-Reaktivity for Java Tool
+# Reaktivity for Java Tool
