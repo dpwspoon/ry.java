@@ -24,10 +24,16 @@ headers.put(":authority", "localhost:8080");
 var port = 8080;
 var address = InetAddress.getByName("127.0.0.1");
 
-var tcpOutputRef = tcpController.routeOutputNew("ws", 0, "127.0.0.1", 1050, null).get(); 
-var wsInputRef = wsController.routeInputNew("http", 0, "tcp", tcpOutputRef, null).get();
-var httpInputRef = httpController.routeInputNew("tcp", 0, "ws", wsInputRef, headers).get(); 
-var tcpInputRef = tcpController.routeInputNew("any", port, "http", httpInputRef, address).get();
-
-print("WS echo bound to localhost:8080");
-
+tcpController.routeOutputNew("ws", 0, "127.0.0.1", 1050, null)
+    .thenCompose(function (tcpOutputRef) {
+        return wsController.routeInputNew("http", 0, "tcp", tcpOutputRef, null);
+    })
+    .thenCompose(function (wsInputRef) {
+        return httpController.routeInputNew("tcp", 0, "ws", wsInputRef, headers);
+    })
+    .thenCompose(function (httpInputRef) {
+        return tcpController.routeInputNew("any", port, "http", httpInputRef, address);
+    })
+    .thenAccept(function () {
+        print("WS proxy bound to localhost:8080");
+    });
