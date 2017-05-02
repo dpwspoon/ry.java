@@ -66,6 +66,16 @@
         <artifactId>nukleus-ws</artifactId>
         <version>develop-SNAPSHOT</version>
       </dependency>
+      <dependency>
+        <groupId>org.reaktivity</groupId>
+        <artifactId>nukleus-http2</artifactId>
+        <version>develop-SNAPSHOT</version>
+      </dependency>
+      <dependency>
+        <groupId>org.reaktivity</groupId>
+        <artifactId>nukleus-http-push</artifactId>
+        <version>develop-SNAPSHOT</version>
+      </dependency>
     </dependencies>
   </dependencyManagement>
 
@@ -85,6 +95,10 @@
     <dependency>
       <groupId>org.reaktivity</groupId>
       <artifactId>nukleus-ws</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.reaktivity</groupId>
+      <artifactId>nukleus-http-push</artifactId>
     </dependency>
   </dependencies>
 
