@@ -101,7 +101,11 @@ public final class ReaktorMain
                 final ScriptEngine engine = manager.getEngineByName("nashorn");
 
                 Bindings bindings = engine.createBindings();
-                reaktor.visit(c -> bindings.put(c.name() + "Controller", c));
+                reaktor.visit(c ->
+                {
+                    final String name = c.name().replaceAll("-", "_") + "Controller";
+                    bindings.put(name, c);
+                });
                 bindings.put("reaktor", reaktor);
 
                 String script = cmdline.getOptionValue("script");
