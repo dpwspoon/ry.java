@@ -105,6 +105,7 @@ public final class ReaktorMain
                 {
                     final String name = c.name().replaceAll("-", "_") + "Controller";
                     bindings.put(name, c);
+                    System.out.println("Nuklei " + c.name() + " via " + name);
                 });
                 bindings.put("reaktor", reaktor);
 
