@@ -37,6 +37,7 @@ import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
 import org.reaktivity.nukleus.Configuration;
+import org.reaktivity.nukleus.Controller;
 import org.reaktivity.reaktor.Reaktor;
 import org.reaktivity.reaktor.matchers.ControllerMatcher;
 import org.reaktivity.reaktor.matchers.NukleusMatcher;
@@ -101,11 +102,12 @@ public final class ReaktorMain
                 final ScriptEngine engine = manager.getEngineByName("nashorn");
 
                 Bindings bindings = engine.createBindings();
-                reaktor.visit(c ->
+                reaktor.controllerKinds().forEach(k ->
                 {
-                    final String name = c.name().replaceAll("-", "_") + "Controller";
+                    Controller c = reaktor.controller(k);
+                    String name = c.name();
+                    System.out.println("Nuklei " + name + " via " + name);
                     bindings.put(name, c);
-                    System.out.println("Nuklei " + c.name() + " via " + name);
                 });
                 bindings.put("reaktor", reaktor);
 
