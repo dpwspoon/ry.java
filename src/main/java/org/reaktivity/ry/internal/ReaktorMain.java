@@ -106,7 +106,8 @@ public final class ReaktorMain
                 {
                     Controller c = reaktor.controller(k);
                     String name = c.name();
-                    System.out.println("Nuklei " + name + " via " + name);
+                    String variable = name.replaceAll("-", "_") + "Controller";
+                    System.out.println("Adding " + variable);
                     bindings.put(name, c);
                 });
                 bindings.put("reaktor", reaktor);
