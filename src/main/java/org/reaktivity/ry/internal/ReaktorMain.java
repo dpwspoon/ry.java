@@ -108,7 +108,7 @@ public final class ReaktorMain
                     String name = c.name();
                     String variable = name.replaceAll("-", "_") + "Controller";
                     System.out.println("Adding " + variable);
-                    bindings.put(name, c);
+                    bindings.put(name, variable);
                 });
                 bindings.put("reaktor", reaktor);
 
