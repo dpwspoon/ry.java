@@ -105,10 +105,9 @@ public final class ReaktorMain
                 reaktor.controllerKinds().forEach(k ->
                 {
                     Controller c = reaktor.controller(k);
-                    String name = c.name();
-                    String variable = name.replaceAll("-", "_") + "Controller";
-                    System.out.println("Adding " + variable);
-                    bindings.put(variable, c);
+                    final String name = c.name().replaceAll("-", "_") + "Controller";
+                    System.out.println("Adding " + name);
+                    bindings.put(name, c);
                 });
                 bindings.put("reaktor", reaktor);
 
