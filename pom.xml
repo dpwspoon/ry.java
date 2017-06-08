@@ -49,37 +49,37 @@
       <dependency>
         <groupId>org.reaktivity</groupId>
         <artifactId>reaktor</artifactId>
-        <version>develop-SNAPSHOT</version>
+        <version>0.2.2</version>
       </dependency>
       <dependency>
         <groupId>org.reaktivity</groupId>
         <artifactId>nukleus-tcp</artifactId>
-        <version>develop-SNAPSHOT</version>
+        <version>0.4</version>
       </dependency>
       <dependency>
         <groupId>org.reaktivity</groupId>
         <artifactId>nukleus-http</artifactId>
-        <version>develop-SNAPSHOT</version>
+        <version>0.6</version>
       </dependency>
       <dependency>
         <groupId>org.reaktivity</groupId>
         <artifactId>nukleus-ws</artifactId>
-        <version>develop-SNAPSHOT</version>
+        <version>0.6</version>
       </dependency>
       <dependency>
         <groupId>org.reaktivity</groupId>
         <artifactId>nukleus-http2</artifactId>
-        <version>develop-SNAPSHOT</version>
+        <version>0.1</version>
       </dependency>
       <dependency>
         <groupId>org.reaktivity</groupId>
         <artifactId>nukleus-http-push</artifactId>
-        <version>develop-SNAPSHOT</version>
+        <version>0.1</version>
       </dependency>
       <dependency>
         <groupId>org.reaktivity</groupId>
         <artifactId>nukleus-http-cache</artifactId>
-        <version>develop-SNAPSHOT</version>
+        <version>0.2</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
