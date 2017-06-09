@@ -24,9 +24,9 @@ headers.put(":authority", "localhost:8080");
 var port = 8080;
 var address = InetAddress.getByName("127.0.0.1");
 
-var wsSource = wsController.routeInputNew("http", 0, "ws", 0, "echo").get();
-var httpSource = httpController.routeInputNew("tcp", 0, "ws", wsSource, headers).get(); 
-var tcpSource = tcpController.routeInputNew("any", port, "http", httpSource, address).get();
+var wsSource = wsController.routeServer("http", 0, "ws", 0, "echo").get();
+var httpSource = httpController.routeServer("tcp", 0, "ws", wsSource, headers).get(); 
+var tcpSource = tcpController.routeServer("any", port, "http", httpSource, address).get();
 
 print("WS echo bound to localhost:8080");
 

@@ -24,6 +24,7 @@ import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.util.Comparator;
 import java.util.Properties;
+import java.util.function.Predicate;
 
 import javax.script.Bindings;
 import javax.script.ScriptEngine;
@@ -39,8 +40,6 @@ import org.apache.commons.cli.Options;
 import org.reaktivity.nukleus.Configuration;
 import org.reaktivity.nukleus.Controller;
 import org.reaktivity.reaktor.Reaktor;
-import org.reaktivity.reaktor.matchers.ControllerMatcher;
-import org.reaktivity.reaktor.matchers.NukleusMatcher;
 
 public final class ReaktorMain
 {
@@ -74,7 +73,7 @@ public final class ReaktorMain
 
             Configuration config = new Configuration(properties);
 
-            NukleusMatcher includeNuklei = name -> true;
+            Predicate<String> includeNuklei = name -> true;
             if (nuklei != null)
             {
                 Comparator<String> comparator = (o1, o2) -> o1.compareTo(o2);
@@ -82,7 +81,7 @@ public final class ReaktorMain
                 includeNuklei = name -> binarySearch(nuklei, name, comparator) >= 0;
             }
 
-            ControllerMatcher includeControllers = c -> true;
+            Predicate<Class<? extends Controller>> includeControllers = c -> true;
             if (controllers != null)
             {
                 includeControllers = c -> binarySearch(controllers, c.getName()) >= 0;
@@ -90,8 +89,8 @@ public final class ReaktorMain
 
             try (Reaktor reaktor = Reaktor.builder()
                     .config(config)
-                    .discover(includeNuklei)
-                    .discover(includeControllers)
+                    .nukleus(includeNuklei)
+                    .controller(includeControllers)
                     .errorHandler(ex -> ex.printStackTrace(System.err))
                     .build()
                     .start())
