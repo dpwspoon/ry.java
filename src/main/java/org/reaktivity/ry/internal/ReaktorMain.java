@@ -88,12 +88,12 @@ public final class ReaktorMain
             }
 
             try (Reaktor reaktor = Reaktor.builder()
-                    .config(config)
-                    .nukleus(includeNuklei)
-                    .controller(includeControllers)
-                    .errorHandler(ex -> ex.printStackTrace(System.err))
-                    .build()
-                    .start())
+                .config(config)
+                .nukleus(includeNuklei)
+                .controller(includeControllers)
+                .errorHandler(ex -> ex.printStackTrace(System.err))
+                .build()
+                .start())
             {
                 System.out.println("Started in " + directory);
 
@@ -119,10 +119,6 @@ public final class ReaktorMain
                 {
                     engine.eval(new InputStreamReader(new FileInputStream(script)), bindings);
                     new SigIntBarrier().await();
-
-                    // TODO: avoid closing eagerly?
-                    // System.out.println("Shutting down");
-                    // CloseHelper.close(reaktor);
                 }
 
             }
