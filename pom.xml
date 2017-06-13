@@ -9,6 +9,7 @@
   <version>0.1</version>
   <packaging>jar</packaging>
   <name>Reaktivity Tool for Java</name>
+  <description>Reaktivity Tool for Java</description>
   <url>https://github.com/reaktivity/ry.java</url>
 
   <licenses>
