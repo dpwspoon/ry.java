@@ -15,6 +15,7 @@
  */
 package org.reaktivity.ry.internal;
 import static java.lang.String.format;
+import static java.nio.file.FileVisitOption.FOLLOW_LINKS;
 import static java.util.Arrays.binarySearch;
 import static java.util.Arrays.sort;
 import static org.agrona.IoUtil.tmpDirName;
@@ -22,6 +23,8 @@ import static org.agrona.IoUtil.tmpDirName;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Comparator;
 import java.util.Properties;
 import java.util.function.Predicate;
@@ -52,6 +55,7 @@ public final class ReaktorMain
         options.addOption(Option.builder("h").longOpt("help").desc("print this message").build());
         options.addOption(Option.builder("n").longOpt("nukleus").hasArgs().desc("nukleus name").build());
         options.addOption(Option.builder("c").longOpt("controller").hasArgs().desc("controller name").build());
+        options.addOption(Option.builder("clean").desc("clean").build());
         options.addOption(Option.builder("s").longOpt("script").hasArgs().desc("execution script").build());
 
         CommandLine cmdline = parser.parse(options, args);
@@ -85,6 +89,19 @@ public final class ReaktorMain
             if (controllers != null)
             {
                 includeControllers = c -> binarySearch(controllers, c.getName()) >= 0;
+            }
+
+            if (cmdline.hasOption("clean"))
+            {
+                Files.walk(config.directory(), FOLLOW_LINKS)
+                .filter(path ->
+                {
+                    final int count = path.getNameCount();
+                    return "control".equals(path.getName(count - 1).toString()) ||
+                            (count >= 2 && "streams".equals(path.getName(count - 2).toString()));
+                })
+                .map(Path::toFile)
+                .forEach(File::delete);
             }
 
             try (Reaktor reaktor = Reaktor.builder()
@@ -124,4 +141,5 @@ public final class ReaktorMain
             }
         }
     }
+
 }
