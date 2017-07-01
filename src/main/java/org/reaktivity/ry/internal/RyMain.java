@@ -44,7 +44,7 @@ import org.reaktivity.nukleus.Configuration;
 import org.reaktivity.nukleus.Controller;
 import org.reaktivity.reaktor.Reaktor;
 
-public final class ReaktorMain
+public final class RyMain
 {
     public static void main(final String[] args) throws Exception
     {
@@ -75,7 +75,7 @@ public final class ReaktorMain
             Properties properties = new Properties();
             properties.setProperty(Configuration.DIRECTORY_PROPERTY_NAME, directory);
 
-            Configuration config = new Configuration(properties);
+            Configuration config = new RyConfiguration(properties);
 
             Predicate<String> includeNuklei = name -> true;
             if (nuklei != null)
@@ -112,7 +112,7 @@ public final class ReaktorMain
                 .build()
                 .start())
             {
-                System.out.println("Started in " + directory);
+                System.out.println("Started in " + config.directory());
 
                 final ScriptEngineManager manager = new ScriptEngineManager();
                 final ScriptEngine engine = manager.getEngineByName("nashorn");
