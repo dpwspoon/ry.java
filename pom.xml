@@ -50,7 +50,7 @@
       <dependency>
         <groupId>org.reaktivity</groupId>
         <artifactId>reaktor</artifactId>
-        <version>0.7</version>
+        <version>0.8</version>
       </dependency>
       <dependency>
         <groupId>org.reaktivity</groupId>
@@ -60,7 +60,7 @@
       <dependency>
         <groupId>org.reaktivity</groupId>
         <artifactId>nukleus-http</artifactId>
-        <version>0.12</version>
+        <version>0.13</version>
       </dependency>
       <dependency>
         <groupId>org.reaktivity</groupId>
@@ -85,7 +85,7 @@
       <dependency>
         <groupId>org.reaktivity</groupId>
         <artifactId>nukleus-tls</artifactId>
-        <version>0.13</version>
+        <version>0.14</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
