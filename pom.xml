@@ -6,7 +6,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.reaktivity</groupId>
   <artifactId>ry</artifactId>
-  <version>0.19</version>
+  <version>0.20</version>
   <packaging>jar</packaging>
   <name>Reaktivity Tool for Java</name>
   <description>Reaktivity Tool for Java</description>
@@ -50,42 +50,42 @@
       <dependency>
         <groupId>org.reaktivity</groupId>
         <artifactId>reaktor</artifactId>
-        <version>0.8.2</version>
+        <version>0.10</version>
       </dependency>
       <dependency>
         <groupId>org.reaktivity</groupId>
         <artifactId>nukleus-tcp</artifactId>
-        <version>0.7</version>
-      </dependency>
-      <dependency>
-        <groupId>org.reaktivity</groupId>
-        <artifactId>nukleus-http</artifactId>
-        <version>0.15</version>
-      </dependency>
-      <dependency>
-        <groupId>org.reaktivity</groupId>
-        <artifactId>nukleus-ws</artifactId>
-        <version>0.17</version>
-      </dependency>
-      <dependency>
-        <groupId>org.reaktivity</groupId>
-        <artifactId>nukleus-http2</artifactId>
-        <version>0.16</version>
-      </dependency>
-      <dependency>
-        <groupId>org.reaktivity</groupId>
-        <artifactId>nukleus-http-push</artifactId>
-        <version>0.6</version>
-      </dependency>
-      <dependency>
-        <groupId>org.reaktivity</groupId>
-        <artifactId>nukleus-http-cache</artifactId>
-        <version>0.5</version>
+        <version>0.8</version>
       </dependency>
       <dependency>
         <groupId>org.reaktivity</groupId>
         <artifactId>nukleus-tls</artifactId>
-        <version>0.14</version>
+        <version>0.15</version>
+      </dependency>
+      <dependency>
+        <groupId>org.reaktivity</groupId>
+        <artifactId>nukleus-http</artifactId>
+        <version>0.18</version>
+      </dependency>
+      <dependency>
+        <groupId>org.reaktivity</groupId>
+        <artifactId>nukleus-ws</artifactId>
+        <version>0.19</version>
+      </dependency>
+      <dependency>
+        <groupId>org.reaktivity</groupId>
+        <artifactId>nukleus-http2</artifactId>
+        <version>0.19.1</version>
+      </dependency>
+      <dependency>
+        <groupId>org.reaktivity</groupId>
+        <artifactId>nukleus-http-cache</artifactId>
+        <version>0.6</version>
+      </dependency>
+      <dependency>
+        <groupId>org.reaktivity</groupId>
+        <artifactId>nukleus-http-push</artifactId>
+        <version>0.7</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
@@ -101,11 +101,11 @@
     </dependency>
     <dependency>
       <groupId>org.reaktivity</groupId>
-      <artifactId>nukleus-http</artifactId>
+      <artifactId>nukleus-tls</artifactId>
     </dependency>
     <dependency>
       <groupId>org.reaktivity</groupId>
-      <artifactId>nukleus-http2</artifactId>
+      <artifactId>nukleus-http</artifactId>
     </dependency>
     <dependency>
       <groupId>org.reaktivity</groupId>
@@ -113,7 +113,7 @@
     </dependency>
     <dependency>
       <groupId>org.reaktivity</groupId>
-      <artifactId>nukleus-http-push</artifactId>
+      <artifactId>nukleus-http2</artifactId>
     </dependency>
     <dependency>
       <groupId>org.reaktivity</groupId>
@@ -121,7 +121,7 @@
     </dependency>
     <dependency>
       <groupId>org.reaktivity</groupId>
-      <artifactId>nukleus-tls</artifactId>
+      <artifactId>nukleus-http-push</artifactId>
     </dependency>
   </dependencies>
 
