@@ -82,11 +82,6 @@
         <artifactId>nukleus-http-cache</artifactId>
         <version>0.7</version>
       </dependency>
-      <dependency>
-        <groupId>org.reaktivity</groupId>
-        <artifactId>nukleus-http-push</artifactId>
-        <version>0.7</version>
-      </dependency>
     </dependencies>
   </dependencyManagement>
 
@@ -118,10 +113,6 @@
     <dependency>
       <groupId>org.reaktivity</groupId>
       <artifactId>nukleus-http-cache</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.reaktivity</groupId>
-      <artifactId>nukleus-http-push</artifactId>
     </dependency>
   </dependencies>
 
