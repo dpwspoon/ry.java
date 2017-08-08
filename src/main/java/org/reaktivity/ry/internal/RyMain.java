@@ -23,14 +23,11 @@ import static org.agrona.IoUtil.tmpDirName;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
-import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Comparator;
 import java.util.Properties;
 import java.util.function.Predicate;
-import java.util.jar.Attributes;
-import java.util.jar.Manifest;
 
 import javax.script.Bindings;
 import javax.script.ScriptEngine;
@@ -66,19 +63,9 @@ public final class RyMain
 
         if (cmdline.hasOption("version"))
         {
-            Class<RyMain> clazz = RyMain.class;
-            String className = clazz.getSimpleName() + ".class";
-            String classPath = clazz.getResource(className).toString();
-            if (classPath.startsWith("jar"))
-            {
-                String manifestPath = classPath.substring(0, classPath.lastIndexOf("!") + 1) +
-                        "/META-INF/MANIFEST.MF";
-                Manifest manifest = new Manifest(new URL(manifestPath).openStream());
-                Attributes attr = manifest.getMainAttributes();
-                String title = attr.getValue("Specification-Title");
-                String version = attr.getValue("Specification-Version");
-                System.out.println(title + " (" + version + ")");
-            }
+            final Package p = Package.getPackage("org.reaktivity.ry.internal");
+            final String version = p.getSpecificationVersion();
+            System.out.println("Version: "+ version);
         }
         if (cmdline.hasOption("help"))
         {
